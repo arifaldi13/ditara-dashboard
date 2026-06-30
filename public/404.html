@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ditara Dashboard</title>
     <script>
-      const basePath = '/ditara-dashboard'
+      const basePath = window.location.hostname.endsWith('vercel.app') ? '' : '/ditara-dashboard'
       const path = window.location.pathname
       const route = path.startsWith(basePath) ? path.slice(basePath.length) : '/'
       window.location.replace(`${basePath}/?p=${encodeURIComponent(route || '/')}`)

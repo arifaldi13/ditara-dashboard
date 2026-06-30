@@ -1,7 +1,11 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
-  base: '/ditara-dashboard/',
-  plugins: [react()],
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '')
+
+  return {
+    base: env.VERCEL ? '/' : '/ditara-dashboard/',
+    plugins: [react()],
+  }
 })
